@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<div>
+    <h1>Survivor Season 46</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Pick 1</th>
+                <th>Pick 2</th>
+                <th>Pick 3</th>
+                <th>Merge Pick</th>
+            </tr>
+        </thead>
+        <tbody id="container">
+
+        </tbody>
+    </table>
+</div>
+<script type="module">
+
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+
+d3.csv("./Picks.csv", (data) => {
+    console.log(data)
+    var row = d3.create("tr")
+
+    row.append("td")
+       .html("<td>" + data["Name"] + "</td>")
+
+    row.append("td")
+       .html("<td>" + data["Pick #1"] + "</td>")
+
+    row.append("td")
+       .html("<td>" + data["Pick #2"] + "</td>")
+
+    row.append("td")
+       .html("<td>" + data["Pick #3"] + "</td>")
+
+    row.append("td")
+       .html("<td>" + data["Merge Pick"] + "</td>")
+
+    container.append(row.node())
+})
+
+</script>
